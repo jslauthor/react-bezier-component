@@ -1,2 +1,2 @@
 export const INITIALIZE = 'INITIALIZE'
-export const SELECT_CURVE = 'SELECT_CURVE'
+export const UPDATE_EQUATION = 'UPDATE_EQUATION'

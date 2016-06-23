@@ -1,0 +1,21 @@
+@import '../css/variables.css';
+
+@component curve-preview {
+
+  width: 45px;
+  height: 30px;
+  margin: 5px;
+  overflow: visible;
+  cursor: pointer;
+
+  @modifier bg {
+    fill: $preview_bg;
+  }
+
+  @modifier curve {
+    fill: none;
+    stroke: $curve_color;
+    stroke-width: 1.5px;
+  }
+
+}

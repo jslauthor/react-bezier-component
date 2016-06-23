@@ -1,0 +1,31 @@
+@import '../css/variables.css';
+
+@component bezier-tool {
+
+  width: calc($app_width - calc($app_padding * 2));
+  height: calc($app_width - calc($app_padding * 2));
+  overflow: visible;
+
+  @descendent container {
+    overflow: visible;
+  }
+
+  @modifier bg {
+    fill: $dark_bg;
+  }
+
+  @modifier bg-dark {
+    fill: color($dark_bg lightness(-10%));
+  }
+
+  @modifier border-bg {
+    fill: $mid_bg;
+  }
+
+  @modifier curve {
+    fill: none;
+    stroke: $curve_color;
+    stroke-width: 2px;
+  }
+
+}
