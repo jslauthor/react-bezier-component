@@ -3,11 +3,36 @@
 @component curve-component {
 
   overflow: visible;
+  pointer-events: none;
 
   @modifier curve {
     fill: none;
     stroke: $curve_color;
     stroke-width: 3px;
+  }
+
+  @modifier label {
+    pointer-events: none;
+    fill: white;
+    font-size: 10px;
+    text-anchor: middle;
+  }
+
+  @modifier sublabel {
+    font-size: 8px;
+  }
+
+  @modifier play {
+    stroke: #393A39;
+    fill: none;
+    stroke-width: 1;
+    fill-rule: evenodd;
+  }
+
+  @modifier pause {
+    stroke: none;
+    fill: #393A39;
+    fill-rule: evenodd;
   }
 
 }

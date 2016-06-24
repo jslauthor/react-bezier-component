@@ -37,6 +37,7 @@ export default class BezierTool extends React.Component {
     super(props);
     this.state = {
       curveBG: null,
+      curveComponent: null,
       isDragging: false
     }
   }
@@ -65,6 +66,16 @@ export default class BezierTool extends React.Component {
     this.setState({isDragging:isDragging});
   }
 
+  onCurveComponentMount = (curve) => {
+    this.setState({
+      curveComponent: curve
+    })
+  }
+
+  handlePlay = (e) => {
+    this.state.curveComponent.handlePlay();
+  }
+
   render() {
 
     const { width, height } = !isNull(this.state.curveBG) ? this.state.curveBG.getBoundingClientRect() : { width: 0, height: 0 };
@@ -81,7 +92,7 @@ export default class BezierTool extends React.Component {
         <svg y="76%" width="100%">{ createBorder(-1)}</svg>
         <svg y="25%" width="100%" height="50%" className="bezier-tool__container">
           <rect ref={this.onCurveMount} x="0" width="85%" height="100%" className="bezier-tool_bg" />
-          <rect x="85%" width="15%" height="100%" className="bezier-tool_bg-dark" />
+          <rect x="85%" width="15%" height="100%" className="bezier-tool_bg-dark" onClick={this.handlePlay} />
           {
             map(points, (p, i) =>
               <Motion key={`c${i}`} style={{x: a(p.x), y: a(p.y)}}>
@@ -108,7 +119,7 @@ export default class BezierTool extends React.Component {
           }
 
           <Motion style={{p1x: a(p1.x), p1y: a(p1.y), p2x: a(p2.x), p2y: a(p2.y)}}>
-            {vals => <CurveComponent width={width} p2x={vals.p2x} p2y={vals.p2y} p1x={vals.p1x} p1y={vals.p1y} height={height} />}
+            {vals => <CurveComponent ref={this.onCurveComponentMount} width={width} p2x={vals.p2x} p2y={vals.p2y} p1x={vals.p1x} p1y={vals.p1y} height={height} />}
           </Motion>
 
           <Motion style={{bez1x: a(p1.x), bez2x: a(p2.x), bez1y: a(p1.y), bez2y: a(p2.y)}}>

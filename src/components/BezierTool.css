@@ -17,7 +17,7 @@
   }
 
   @modifier bg-dark {
-    fill: color($dark_bg lightness(-10%));
+    fill: $darker_bg;
   }
 
   @modifier border-bg {
