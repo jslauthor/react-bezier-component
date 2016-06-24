@@ -3,7 +3,7 @@
 @component app {
 
   width: $app_width;
-  min-height: 400px;
+  min-height: 500px;
   padding: 10px;
   background: $primary_bg;
   border-radius: 3px;
