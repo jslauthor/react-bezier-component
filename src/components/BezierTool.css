@@ -5,9 +5,11 @@
   width: calc($app_width - calc($app_padding * 2));
   height: calc($app_width - calc($app_padding * 2));
   overflow: visible;
+  position: relative;
 
   @descendent container {
     overflow: visible;
+    position: relative;
   }
 
   @modifier bg {
@@ -25,7 +27,12 @@
   @modifier curve {
     fill: none;
     stroke: $curve_color;
-    stroke-width: 2px;
+    stroke-width: 3px;
+    opacity: .8;
+  }
+
+  @modifier handle {
+    cursor: pointer;
   }
 
 }

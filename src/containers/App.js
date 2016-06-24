@@ -15,10 +15,6 @@ import './App.css';
 export default class App extends React.Component {
 
   handleEquationUpdate = (e) => {
-
-  }
-
-  handleEquationSelection = (e) => {
     this.props.updateEquation(e);
   }
 
@@ -37,7 +33,7 @@ export default class App extends React.Component {
 
         <CurveList
           curves={curves}
-          onEquationSelection={this.handleEquationSelection} />
+          onEquationSelection={this.handleEquationUpdate} />
 
       </div>
     );

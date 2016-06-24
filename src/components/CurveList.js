@@ -14,7 +14,7 @@ export default class CurveList extends React.Component {
 
   static defaultProps = {
     curves: [],
-    onEquationSelection: {}
+    onEquationSelection: () => {}
   }
 
   render() {
