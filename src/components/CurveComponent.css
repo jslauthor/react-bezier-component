@@ -1,0 +1,13 @@
+@import '../css/variables.css';
+
+@component curve-component {
+
+  overflow: visible;
+
+  @modifier curve {
+    fill: none;
+    stroke: $curve_color;
+    stroke-width: 3px;
+  }
+
+}

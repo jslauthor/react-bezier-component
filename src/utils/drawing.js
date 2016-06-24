@@ -3,7 +3,6 @@ import range from 'lodash/range';
 import reverse from 'lodash/reverse';
 import Point from 'point-geometry';
 import {spring} from 'react-motion';
-import Bezier from 'bezier-js';
 
 export function animate(val, bool=true) {
   return bool === true ? spring(val) : val;

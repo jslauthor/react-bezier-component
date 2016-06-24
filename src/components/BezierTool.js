@@ -15,6 +15,7 @@ import {
 import Point from 'point-geometry';
 import {Motion, spring} from 'react-motion'
 import BezierHandle from './BezierHandle';
+import CurveComponent from './CurveComponent';
 import Bezier from 'bezier-js';
 
 const T1 = .25; // point sitting at 25% on curve
@@ -71,10 +72,6 @@ export default class BezierTool extends React.Component {
     const {p1, p2} = points;
     const lines = [{p1:new Point(0, height), p2:points.p1}, {p1:points.p1, p2:points.p2}, {p1:points.p2, p2:new Point(width, 0)}];
 
-    const bezier = new Bezier(0, height, p1.x, p1.y, p2.x, p2.y, width, 0);
-    const bez1 = p1;
-    const bez2 = p2;
-
     const {isDragging} = this.state;
     const a = partialRight(animate, !isDragging);
 
@@ -87,8 +84,8 @@ export default class BezierTool extends React.Component {
           <rect x="85%" width="15%" height="100%" className="bezier-tool_bg-dark" />
           {
             map(points, (p, i) =>
-              <Motion style={{x: a(p.x), y: a(p.y)}}>
-                {vals => <circle key={`c${i}`} cx={vals.x} cy={vals.y} r="2.5" fill="white" /> }
+              <Motion key={`c${i}`} style={{x: a(p.x), y: a(p.y)}}>
+                {vals => <circle cx={vals.x} cy={vals.y} r="2.5" fill="white" /> }
               </Motion>)
           }
           {
@@ -111,21 +108,22 @@ export default class BezierTool extends React.Component {
           }
 
           <Motion style={{p1x: a(p1.x), p1y: a(p1.y), p2x: a(p2.x), p2y: a(p2.y)}}>
-            {vals => <path key={Math.random()*width} d={`M${width},0 C${vals.p2x},${vals.p2y} ${vals.p1x},${vals.p1y} 0,${height}`} className="bezier-tool_curve" />}
+            {vals => <CurveComponent width={width} p2x={vals.p2x} p2y={vals.p2y} p1x={vals.p1x} p1y={vals.p1y} height={height} />}
           </Motion>
-          <Motion style={{bez1x: a(bez1.x), bez2x: a(bez2.x), bez1y: a(bez1.y), bez2y: a(bez2.y)}}>
-          {vals =>
-            <g key="handles">
-              <BezierHandle x={vals.bez1x} y={vals.bez1y}
-                className="bezier-tool__container bezier-tool_handle"
-                onDrag={partial(this.handleDrag, 'bez1')}
-                onDragging={this.handleDragging} />
-              <BezierHandle x={vals.bez2x} y={vals.bez2y}
-                className="bezier-tool__container bezier-tool_handle"
-                onDrag={partial(this.handleDrag, 'bez2')}
-                onDragging={this.handleDragging} />
-            </g>
-          }
+
+          <Motion style={{bez1x: a(p1.x), bez2x: a(p2.x), bez1y: a(p1.y), bez2y: a(p2.y)}}>
+            {vals =>
+              <g key="handles">
+                <BezierHandle x={vals.bez1x} y={vals.bez1y}
+                  className="bezier-tool__container bezier-tool_handle"
+                  onDrag={partial(this.handleDrag, 'bez1')}
+                  onDragging={this.handleDragging} />
+                <BezierHandle x={vals.bez2x} y={vals.bez2y}
+                  className="bezier-tool__container bezier-tool_handle"
+                  onDrag={partial(this.handleDrag, 'bez2')}
+                  onDragging={this.handleDragging} />
+              </g>
+            }
           </Motion>
         </svg>
       </svg>
