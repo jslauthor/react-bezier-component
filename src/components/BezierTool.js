@@ -105,8 +105,6 @@ export default class BezierTool extends React.Component {
                   vals => {
                     const w = 8; const h = .5;
                     const strokeStyle = i == 1 ? '#D8707B' : i == 0 ? '#F5A623' : '#B530E5';
-                    console.log("");
-                    console.log(strokeStyle);
                     return <g>
                       <svg x={vals.cp1x-(w/2)} y={vals.cp1y-(h/2)}
                            width="0" height="0"

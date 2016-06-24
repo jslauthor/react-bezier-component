@@ -1,12 +1,12 @@
 # React Audio Component Example Project
 
-A beautiful example project demonstrating how to build an audio player in React. Desktop optimized though it works on mobile down to iPhone 5 resolutions.
+Just a ridiculously sweet cubic bezier editor that I designed and crafted with React/Redux. SVG and Animations FTW!
 
 ## The Player
 
-![Audio Player](http://leonardsouza.com/public/images/portfolio/audio_player.jpg)
+![Cubic Bezier Editor](http://leonardsouza.com/public/images/portfolio/cubic_bezier.jpg)
 
-Demo [here](http://leonardsouza.com/react-audio-example.html). Check it out!
+Demo [here](http://leonardsouza.com/react-bezier-component.html). Check it out!
 
 ### Quick Start
 
