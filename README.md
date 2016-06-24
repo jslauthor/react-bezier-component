@@ -2,7 +2,7 @@
 
 Just a ridiculously sweet cubic bezier editor that I designed and crafted with React/Redux. SVG and Animations FTW!
 
-## The Player
+## The Cubic Bezier Editor
 
 ![Cubic Bezier Editor](http://leonardsouza.com/public/images/portfolio/cubic_bezier.jpg)
 
