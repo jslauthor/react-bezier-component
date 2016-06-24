@@ -1,6 +1,6 @@
 # React Audio Component Example Project
 
-Just a ridiculously sweet cubic bezier editor that I designed and crafted with React/Redux. SVG and Animations FTW!
+Just a ridiculously sweet cubic bezier editor that I designed and crafted with React/Redux as an example project for an upcoming course I'm teaching. SVG and Animations FTW!
 
 ## The Cubic Bezier Editor
 
