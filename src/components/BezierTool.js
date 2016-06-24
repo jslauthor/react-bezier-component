@@ -93,19 +93,27 @@ export default class BezierTool extends React.Component {
         <svg y="25%" width="100%" height="50%" className="bezier-tool__container">
           <rect ref={this.onCurveMount} x="0" width="85%" height="100%" className="bezier-tool_bg" />
           <rect x="85%" width="15%" height="100%" className="bezier-tool_bg-dark" onClick={this.handlePlay} />
-          {
-            map(points, (p, i) =>
-              <Motion key={`c${i}`} style={{x: a(p.x), y: a(p.y)}}>
-                {vals => <circle cx={vals.x} cy={vals.y} r="2.5" fill="white" /> }
-              </Motion>)
-          }
+
+          <Motion style={{p1x: a(p1.x), p1y: a(p1.y), p2x: a(p2.x), p2y: a(p2.y)}}>
+            {vals => <CurveComponent ref={this.onCurveComponentMount} width={width} p2x={vals.p2x} p2y={vals.p2y} p1x={vals.p1x} p1y={vals.p1y} height={height} />}
+          </Motion>
+
           {
             map(lines, (p, i) =>
-              <Motion style={interpolatedLines(p, !isDragging)}>
+              <Motion key={`l${i}`} style={interpolatedLines(p, !isDragging)}>
                 {
                   vals => {
                     const w = 8; const h = .5;
-                    return <g key={`l${i}`}>
+                    const strokeStyle = i == 1 ? 'url(#sunsetGrad)' : i == 0 ? '#F5A623' : '#B530E5';
+                    console.log("");
+                    console.log(strokeStyle);
+                    return <g>
+                      <defs>
+                        <linearGradient id="sunsetGrad" x1={vals.p1x} y1={vals.p1y} x2={vals.p2x} y2={vals.p2y}>
+                          <stop offset="0%" stopColor="#B530E5" stopOpacity="1" />
+                          <stop offset="100%" stopColor="#F5A623" stopOpacity="1" />
+                        </linearGradient>
+                      </defs>
                       <svg x={vals.cp1x-(w/2)} y={vals.cp1y-(h/2)}
                            width="0" height="0"
                            className="bezier-tool__container">
@@ -113,16 +121,12 @@ export default class BezierTool extends React.Component {
                           height={`${h}px`} width={`${w}px`} fill="white"
                           style={{transformOrigin: 'center', transform: `rotate(${vals.angle}deg)`}} />
                       </svg>
-                      <line x1={vals.p1x} y1={vals.p1y} x2={vals.p2x} y2={vals.p2y} strokeWidth="1" stroke="white" />
+                      <line x1={vals.p1x} y1={vals.p1y} x2={vals.p2x} y2={vals.p2y} strokeWidth="1" stroke={strokeStyle} />
                     </g>
                   }
                 }
               </Motion>)
           }
-
-          <Motion style={{p1x: a(p1.x), p1y: a(p1.y), p2x: a(p2.x), p2y: a(p2.y)}}>
-            {vals => <CurveComponent ref={this.onCurveComponentMount} width={width} p2x={vals.p2x} p2y={vals.p2y} p1x={vals.p1x} p1y={vals.p1y} height={height} />}
-          </Motion>
 
           <Motion style={{bez1x: a(p1.x), bez2x: a(p2.x), bez1y: a(p1.y), bez2y: a(p2.y)}}>
             {vals =>
