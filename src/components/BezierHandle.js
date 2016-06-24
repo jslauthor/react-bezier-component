@@ -4,10 +4,12 @@ export default class BezierHandle extends React.Component {
 
   static propTypes = {
     onDrag: React.PropTypes.func,
+    onDragging: React.PropTypes.func
   };
 
   static defaultProps = {
-    onDrag: () => {}
+    onDrag: () => {},
+    onDragging: () => {}
   };
 
   constructor(props) {
@@ -31,6 +33,7 @@ export default class BezierHandle extends React.Component {
 
   handleMouseDown = (e) => {
     this.setState({isDragging:true});
+    this.props.onDragging(true);
   }
 
   handleMouseMove = (e) => {
@@ -41,14 +44,15 @@ export default class BezierHandle extends React.Component {
 
   handleMouseUp = (e) => {
    this.setState({isDragging:false});
+   this.props.onDragging(false);
   }
 
   render() {
     return (
       <svg {...this.props} onMouseDown={this.handleMouseDown}>
-          <circle r="9" stroke="#00BCE3" strokeWidth="2" />
-          <circle r="5" fill="#BAEBFF" />
-        </svg>
+        <circle r="9" stroke="#00BCE3" strokeWidth="2" />
+        <circle r="5" fill="#BAEBFF" />
+      </svg>
     );
   }
 }
