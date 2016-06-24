@@ -106,7 +106,9 @@ export default class BezierTool extends React.Component {
                   vals => {
                     const w = 8; const h = .5;
                     return <g key={`l${i}`}>
-                      <svg x={vals.cp1x-(w/2)} y={vals.cp1y-(h/2)} className="bezier-tool__container">
+                      <svg x={vals.cp1x-(w/2)} y={vals.cp1y-(h/2)}
+                           width="0" height="0"
+                           className="bezier-tool__container">
                         <rect
                           height={`${h}px`} width={`${w}px`} fill="white"
                           style={{transformOrigin: 'center', transform: `rotate(${vals.angle}deg)`}} />
@@ -132,7 +134,7 @@ export default class BezierTool extends React.Component {
                 <BezierHandle x={vals.bez2x} y={vals.bez2y}
                   className="bezier-tool__container bezier-tool_handle"
                   onDrag={partial(this.handleDrag, 'bez2')}
-                  onDragging={this.handleDragging} />
+                  onDragging={this.handleDragging} type={2} />
               </g>
             }
           </Motion>

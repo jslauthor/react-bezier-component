@@ -60,6 +60,7 @@
     "rc-tooltip": "^3.3.2",
     "react": "^15.1.0",
     "react-addons-css-transition-group": "^15.1.0",
+    "react-copy-to-clipboard": "^4.1.0",
     "react-dnd": "^2.1.4",
     "react-dom": "^15.1.0",
     "react-draggable": "^2.1.2",

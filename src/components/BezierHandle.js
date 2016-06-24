@@ -4,12 +4,14 @@ export default class BezierHandle extends React.Component {
 
   static propTypes = {
     onDrag: React.PropTypes.func,
-    onDragging: React.PropTypes.func
+    onDragging: React.PropTypes.func,
+    type: React.PropTypes.number
   };
 
   static defaultProps = {
     onDrag: () => {},
-    onDragging: () => {}
+    onDragging: () => {},
+    type: 1
   };
 
   constructor(props) {
@@ -50,7 +52,7 @@ export default class BezierHandle extends React.Component {
   render() {
     return (
       <svg {...this.props} onMouseDown={this.handleMouseDown}>
-        <circle r="9" stroke="#00BCE3" strokeWidth="2" />
+        <circle r="9" className={`bezier-tool_type${this.props.type}`} strokeWidth="2" />
         <circle r="5" fill="#BAEBFF" />
       </svg>
     );

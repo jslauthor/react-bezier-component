@@ -3,7 +3,7 @@
 @component app {
 
   width: $app_width;
-  min-height: 300px;
+  min-height: 400px;
   padding: 10px;
   background: $primary_bg;
   border-radius: 3px;
@@ -14,10 +14,48 @@
   overflow: visible;
 
   @descendent css-value {
-    background-color: $mid_bg;
+    transition: all .25s ease;
+    background-color: $dark_bg;
     padding: 10px;
     border-radius: 3px;
     margin: 10px 0;
+    font-family: "fira-mono",sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10px;
+    letter-spacing: 2px;
+    user-select: none;
+    position: relative;
+    cursor: pointer;
+    z-index: 0;
+    &:hover {
+      background-color: $darker_bg;
+    }
+    &:active {
+      transition: none;
+      background-color: $dark_green;
+    }
   }
 
+  @modifier copyPasteIcon {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+  }
+
+  @modifier values {
+    text-align: center;
+  }
+
+  @modifier function {
+    color: $function_color;
+  }
+
+  @modifier handle1 {
+    color: $handle1_color;
+  }
+
+  @modifier handle2 {
+    color: $handle2_color;
+  }
 }

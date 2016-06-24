@@ -4,6 +4,7 @@
 
   overflow: visible;
   pointer-events: none;
+  user-select: none;
 
   @modifier curve {
     fill: none;

@@ -2,10 +2,11 @@
 
 @component bezier-tool {
 
-  width: calc($app_width - calc($app_padding * 2));
-  height: calc($app_width - calc($app_padding * 2));
+  width: 100%;
+  height: 220px;
   overflow: visible;
   position: relative;
+  z-index: 1;
 
   @descendent container {
     overflow: visible;
@@ -33,6 +34,14 @@
 
   @modifier handle {
     cursor: pointer;
+  }
+
+  @modifier type1 {
+    stroke: $handle1_color;
+  }
+
+  @modifier type2 {
+    stroke: $handle2_color;
   }
 
 }
