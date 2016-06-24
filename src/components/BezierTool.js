@@ -104,16 +104,10 @@ export default class BezierTool extends React.Component {
                 {
                   vals => {
                     const w = 8; const h = .5;
-                    const strokeStyle = i == 1 ? 'url(#sunsetGrad)' : i == 0 ? '#F5A623' : '#B530E5';
+                    const strokeStyle = i == 1 ? '#D8707B' : i == 0 ? '#F5A623' : '#B530E5';
                     console.log("");
                     console.log(strokeStyle);
                     return <g>
-                      <defs>
-                        <linearGradient id="sunsetGrad" x1={vals.p1x} y1={vals.p1y} x2={vals.p2x} y2={vals.p2y}>
-                          <stop offset="0%" stopColor="#B530E5" stopOpacity="1" />
-                          <stop offset="100%" stopColor="#F5A623" stopOpacity="1" />
-                        </linearGradient>
-                      </defs>
                       <svg x={vals.cp1x-(w/2)} y={vals.cp1y-(h/2)}
                            width="0" height="0"
                            className="bezier-tool__container">
